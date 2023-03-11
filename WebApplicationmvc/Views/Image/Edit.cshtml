@@ -1,0 +1,39 @@
+﻿@model WebApplicationmvc.Models.ImageView.Image
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<form method="post" enctype="multipart/form-data" asp-action="Edit">
+    <div asp-validation-summary="ModelOnly" class="text-danger text-center"></div>
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Edit Image</h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="All"></div> @*display all the validation at a time*@
+        <div class="mb-3">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+            @*<span asp-validation-for="Name" class="text-danger"></span>*@ @*display specific the validation at a time*@
+        </div>
+        <div class="mb-3">
+            <label asp-for="ImagePath"></label>
+            <input asp-for="ImagePath" type="file" class="form-control" />
+            @*<span asp-validation-for="ImagePath" class="text-danger"></span>*@
+        </div>
+        <div class="mb-3">
+            <img src="~/Content/Images/@Model.Path" width="200px" height="200px"/>
+        </div>
+        <button class="btn btn-primary" type="submit" style="width:150px;">Update</button>
+        <a asp-controller="Image" asp-action="Index" class="btn btn-secondary" style="width:150px;">Back</a>
+    </div>
+</form>
+
+@*client side validation*@
+@*@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}*@
+

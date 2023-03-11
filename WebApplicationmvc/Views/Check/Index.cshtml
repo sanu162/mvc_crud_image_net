@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model IEnumerable<Check>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="primary">People List </h2>
+        </div>
+        <div class="col-6">
+            <a asp-controller="Check" asp-action="Create" class="btn btn-primary">Add New Person</a>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped" style="width:100%; ">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td>@obj.Name</td>
+                    <td>@obj.Gender</td>
+                    <td>
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-controller="Check" class="btn btn-primary mx-2" asp-action="Edit" asp-route-id="@obj.Id">Edit</a>
+                            <a asp-controller="Check" class="btn btn-danger mx-2" asp-action="Delete" asp-route-id="@obj.Id">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
